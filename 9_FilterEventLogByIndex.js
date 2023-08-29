@@ -12,19 +12,18 @@ const contract  = new ethers.Contract(addressWETH, abiWETH, provider)
 
 
 //parse transfer tx where from == 0xf89d7b9c864f589bbF53a82105107622B35EaA40
-const filter = contract.filters.Transfer("0xf89d7b9c864f589bbF53a82105107622B35EaA40")
+//const filter = contract.filters.Transfer("0xf89d7b9c864f589bbF53a82105107622B35EaA40")
 
-//parse transfer tx where to == 0x28C6c06298d514Db089934071355E5743bf21d60
-// filter = contract.filters.Transfer(null,"0x28C6c06298d514Db089934071355E5743bf21d60")
+//parse transfer tx where to == 0xE47cFa186DC0bce636754950DcA0ca850D593c5E
+const filter = contract.filters.Transfer(null,"0xE47cFa186DC0bce636754950DcA0ca850D593c5E")
 
 
-const transferEvents = await contract.queryFilter(filter, 18019758,18019764)
-
+const transferEvents = await contract.queryFilter(filter, 18019762,18019764)
+// 返回的已经的event.log数据
+//evnet.log
 for (const transferEvent of transferEvents) {
-    console.log("\n 解析事件：")
-    
   //  const amount = ethers.formatUnits(ethers.toBigInt(transferEvent.args["amount"]), "ether");
-  const txhash = transferEvent.log["blockNumber"]
+    const blockNum = transferEvent.blockNumber
     const amount = transferEvent.args["amount"]
-    console.log(`地址 ${transferEvent.args["from"]} 转账${amount} * 10^{18} WETH 到地址 ${transferEvent.args["to"]}`)
+    console.log(`地址 ${transferEvent.args["from"]} 转账${amount} * 10^{18} WETH 到地址 ${transferEvent.args["to"] } 区块 ${blockNum}`)
 }
