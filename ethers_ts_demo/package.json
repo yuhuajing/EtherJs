@@ -1,0 +1,27 @@
+{
+  "name": "erc6551",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node app.ts",
+    "client": "ts-node client.ts",
+    "1-transfer": "ts-node 1-transfer.ts",
+    "2-deploy": "ts-node 2-deploy.ts",
+    "3-transfer": "ts-node 3-transfer.ts",
+    "4-get": "ts-node 4-get.ts",
+    "signMessage":"ts-node signMessage.ts"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tokenbound/sdk": "^0.3.5",
+    "dotenv": "^16.3.1",
+    "ethers": "^5.7.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
