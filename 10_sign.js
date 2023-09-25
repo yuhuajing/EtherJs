@@ -21,13 +21,13 @@ const main = async () => {
     const messageHashBytes = ethers.getBytes(msgHash)
     const signature = await signer.signMessage(messageHashBytes);
    // console.log(`msgHash: ${msgHash}`)
-    console.log(`签名：${signature}`)
+    console.log(`签名：${signature}`) //https://github.com/yuhuajing/solidityLearn/blob/main/smartContract/ECDSA/ECDSA.md
 
 
     const message = "Hello, World!";
 
     const rawSig = await signer.signMessage(message);
-    console.log(rawSig);
+    console.log(rawSig);  // https://github.com/yuhuajing/solidityLearn/blob/main/smartContract/ECDSA/ecdsaVerify.sol/#L110
 
     //sig = Signature.from(rawSig);
     //const encodedMsg =  ethers.solidityPackedKeccak256(["string"], [msg]);
