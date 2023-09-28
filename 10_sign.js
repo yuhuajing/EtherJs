@@ -25,13 +25,13 @@ const main = async () => {
 
     const manager = new ethers.Wallet(manager_prikey, provider)
     console.log(`manager钱包地址:${manager.address}`)
-    const managerstr = "ManagerMessage"
+    const managerstr = "managerMessage"
     // 等效于Solidity中的keccak256(abi.encodePacked(account, tokenId))
     const managermsgHash = ethers.solidityPackedKeccak256(
         ['string'],
         [managerstr])
     const managermessageHashBytes = ethers.getBytes(managermsgHash)
-    const managersignature = await signer.signMessage(managermessageHashBytes);
+    const managersignature = await manager.signMessage(managermessageHashBytes);
     console.log(`Manager签名:${managersignature}`) //https://github.com/yuhuajing/solidityLearn/blob/main/smartContract/ECDSA/ECDSA.md
 
     // const message = "Hello, World!";
